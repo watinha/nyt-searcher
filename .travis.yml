@@ -2,8 +2,5 @@ language: node_js
 services:
     - docker
 
-before_install:
-    - docker run -it -v "$(pwd)":/app node:10.15.1-alpine ash
-
 script:
-    - cd /app; npm install; npm test
+    - docker run -v "$(pwd)":/app node:10.15.1-alpine "cd /app; npm install; npm test"
