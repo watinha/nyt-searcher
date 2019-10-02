@@ -1,5 +1,3 @@
-services:
-    - docker
-
-script:
-    - docker run -v "$(pwd)":/app node:10.15.1-alpine "cd /app; npm install; npm test"
+language: node_js
+node_js:
+    - 10.15.1
