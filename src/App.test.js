@@ -18,3 +18,10 @@ it('renders without crashing', () => {
     expect(h1.length).toBe(1);
     expect(h1[0].innerHTML).toBe('NYT Searcher Tool');
 });
+
+it('renders article component', () => {
+    let component = div.querySelectorAll('div > div'),
+        input = div.querySelectorAll('input');
+    expect(component.length).toBe(1);
+    expect(input.length).toBe(1);
+});

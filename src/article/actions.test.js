@@ -26,7 +26,7 @@ describe('search action', () => {
         let dispatch = jest.fn(),
 			url = 'https://api.nytimes.com/svc/search/v2/articlesearch.json?q=nadal&api-key=j2SELYz4iSc3GfFXVxPtCbR2YZ7QGrCU',
             result;
-		axios.get.mockResolvedValue(JSON.stringify(json_stub));
+		axios.get.mockResolvedValue({ 'data': json_stub });
         result = ArticleActions.search('nadal');
         result = await result(dispatch);
         expect(dispatch).toBeCalledWith(ArticleActions.start_req());
@@ -39,7 +39,7 @@ describe('search action', () => {
         let dispatch = jest.fn(),
 			url = 'https://api.nytimes.com/svc/search/v2/articlesearch.json?q=otherthing&api-key=j2SELYz4iSc3GfFXVxPtCbR2YZ7QGrCU',
             result;
-		axios.get.mockResolvedValue(JSON.stringify(json_stub));
+		axios.get.mockResolvedValue({ 'data': json_stub });
         result = ArticleActions.search('otherthing');
         result = await result(dispatch);
         expect(dispatch).toBeCalledWith(ArticleActions.start_req());

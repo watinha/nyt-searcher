@@ -12,11 +12,10 @@ export class ArticleActions {
     static search (query) {
         return async (dispatch) => {
             dispatch(ArticleActions.start_req());
-			let response = await axios.get(
+			let json = await axios.get(
 				'https://api.nytimes.com/svc/search/v2/articlesearch.json?' +
-				`q=${query}&api-key=j2SELYz4iSc3GfFXVxPtCbR2YZ7QGrCU`),
-				json = JSON.parse(response);
-			dispatch(ArticleActions.load(json['response']['docs']));
+				`q=${query}&api-key=j2SELYz4iSc3GfFXVxPtCbR2YZ7QGrCU`);
+			dispatch(ArticleActions.load(json['data']['response']['docs']));
             dispatch(ArticleActions.end_req());
         };
     }

@@ -61,7 +61,7 @@ it('should render article when button is clicked', (done) => {
         button = div.querySelector('button'),
         articles_container = div.querySelector('ul'),
         items;
-    axios.get.mockResolvedValue(JSON.stringify(json_stub));
+    axios.get.mockResolvedValue({ 'data': json_stub });
     search_field.value = 'nadal';
     ReactTestUtils.Simulate.change(search_field);
     ReactTestUtils.Simulate.click(button);
@@ -99,7 +99,7 @@ it('should render article when button is clicked with different arguments', (don
             }
         }
     ];
-    axios.get.mockResolvedValue(JSON.stringify(json_stub));
+    axios.get.mockResolvedValue({ 'data': json_stub });
     search_field.value = 'otherplayers';
     ReactTestUtils.Simulate.change(search_field);
     ReactTestUtils.Simulate.click(button);
