@@ -7,7 +7,7 @@ import thunkMiddleware from 'redux-thunk';
 import axios from 'axios';
 
 import ArticleSearch from './component';
-import { article_reducer } from './reducer';
+import article_reducer from './reducer';
 
 let div = null;
 jest.mock('axios');

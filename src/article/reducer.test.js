@@ -1,4 +1,4 @@
-import { article_reducer } from './reducer';
+import article_reducer from './reducer';
 import { ArticleActions } from './actions';
 
 it('should return empty initial state', () => {

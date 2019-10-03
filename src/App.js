@@ -3,7 +3,7 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import thunkMiddleware from 'redux-thunk';
 
-import { article_reducer } from './article/reducer';
+import article_reducer from './article/reducer';
 import ArticleSearch from './article/component';
 
 let store = createStore(
