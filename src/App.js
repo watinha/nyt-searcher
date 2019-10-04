@@ -1,13 +1,15 @@
 import React from 'react';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import thunkMiddleware from 'redux-thunk';
+import createSagaMiddleware from 'redux-saga';
 
 import article_reducer from './article/reducer';
 import ArticleSearch from './article/component';
+import { article_request } from './article/sagas';
 
-let store = createStore(
-    article_reducer, applyMiddleware(thunkMiddleware));
+let sagaMiddleware = createSagaMiddleware(),
+    store = createStore(article_reducer, applyMiddleware(sagaMiddleware));
+sagaMiddleware.run(article_request);
 
 function App() {
   return (

@@ -4,10 +4,12 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import ReactTestUtils from 'react-dom/test-utils';
 import thunkMiddleware from 'redux-thunk';
+import createSagaMiddleware from 'redux-saga';
 import axios from 'axios';
 
 import ArticleSearch from './component';
 import article_reducer from './reducer';
+import { article_request } from './sagas';
 
 let div = null;
 jest.mock('axios');
@@ -28,9 +30,9 @@ let json_stub = {
 };
 
 beforeEach(() => {
-    let store = createStore(
-        article_reducer,
-        applyMiddleware(thunkMiddleware));
+    let sagaMiddleware = createSagaMiddleware(),
+        store = createStore(article_reducer, applyMiddleware(sagaMiddleware));
+    sagaMiddleware.run(article_request);
     div = document.createElement('div');
     ReactDOM.render(
         <Provider store={store}>
